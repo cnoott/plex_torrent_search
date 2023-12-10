@@ -11,15 +11,24 @@
         <h1>Media Search</h1>
         <p class='sub-text'>0.0.1</p>
       </header>
+      <h4 id="loadingMessage" style="display: none;">
+        Loading Search Results
+      </h4>
       <form action="/search" method="get">
         <input
         type="text"
         name="query"
         placeholder="Search for Movie or TV Show"
         required>
-        <button type="submit">Search</button>
+        <button type="submit" onclick="showLoading()">Search</button>
       </form>
     </div>
+    <script type="text/javascript">
+      function showLoading() {
+        document.getElementById('loadingMessage').style.display = 'block';
+      }
+    </script>
+
   </body>
 </html>
 

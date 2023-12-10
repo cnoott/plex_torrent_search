@@ -10,6 +10,8 @@
       <header>
         <h1><a href='/'>Media Search</a></h1>
       </header>
+      <p id="loadingMessage" style="display: none;">LOADING...</p>
+
       <table>
         <thead>
           <tr>
@@ -21,7 +23,10 @@
         </thead>
         <tbody>
           <% searchResults.forEach(function(result) { %>
-          <tr onclick="window.location.href='/choice?magnetLink=<%= encodeURIComponent(result.magnetLink) %>'" style="cursor:pointer;">
+          <tr
+            onclick="showLoading(); window.location.href=
+            '/choice?magnetLink=<%= encodeURIComponent(result.magnetLink) %>&name=<%= encodeURIComponent(result.name) %>'"
+            style="cursor:pointer;">
 
             <td><%= result.name %></td>
             <td><%= result.size %></td>
@@ -32,5 +37,10 @@
         </tbody>
       </table>
     </section>
+    <script type="text/javascript">
+      function showLoading() {
+        document.getElementById('loadingMessage').style.display = 'block';
+      }
+    </script>
   </body>
 </html>
