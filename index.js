@@ -94,7 +94,7 @@ app.get('/progress', async (req, res) => {
       console.log(typeof percentageComplete);
       if (percentageComplete === 100) {
         delete activeTorrents[magnetLink];
-        res.redirect('complete');
+        res.redirect(`complete?magnetLink=${encodeURIComponent(magnetLink)}`);
       }
       res.json({percentageComplete});
     } else {
@@ -121,7 +121,7 @@ app.get('/show-progress', async (req, res) => {
 
 app.get('/complete', async (req, res) => {
   try {
-    let magnetLink = req.query.magnetLink;
+    let magnetLink = decodeURIComponent(req.query.magnetLink);
     delete activeTorrents[magnetLink];   
     res.render('complete');
   } catch (err) {
