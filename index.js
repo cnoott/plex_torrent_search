@@ -6,6 +6,7 @@ import PirateBay from 'thepiratebayfixed';
 import WebTorrent from 'webtorrent';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import diskusage from 'diskusage';
 import dotenv from 'dotenv';
 dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -28,7 +29,17 @@ app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'ejs');
 
 app.get('/', async (req, res) => {
-  res.render('index');
+  // check storage capacity
+  const info = await diskusage.check('/');
+
+  const totalDiskSpace = info.total;
+  const freeDiskSpace = info.free;
+
+  const usedDiskSace = totalDiskSpace - freeDiskSpace;
+
+  const percentUsed = (usedDiskSace * 100) / totalDiskSpace;
+
+  res.render('index', { percentUsed: percentUsed.toFixed(2)});
 });
 
 app.get('/search', async (req, res) => {

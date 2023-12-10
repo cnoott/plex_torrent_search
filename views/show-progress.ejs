@@ -35,7 +35,7 @@
                         setTimeout(updateProgress, 9999); 
                     }
                     else {
-                      window.location.href = `/complete?magnetLink=${magnetLink}`; 
+                      window.location.href = `/complete?magnetLink=$encodeURIComponent({magnetLink})`; 
                     }
                 })
                 .catch(error => {
