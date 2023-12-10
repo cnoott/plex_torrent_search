@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>Search Results</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+
+  <body>
+    <section>
+      <header>
+        <h1><a href='/'>Media Search</a></h1>
+      </header>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Seeders</th>
+            <th>Leechers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% searchResults.forEach(function(result) { %>
+          <tr onclick="window.location.href='/choice?magnetLink=<%= encodeURIComponent(result.magnetLink) %>'" style="cursor:pointer;">
+
+            <td><%= result.name %></td>
+            <td><%= result.size %></td>
+            <td><%= result.seeders %></td>
+            <td><%= result.leechers %></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </section>
+  </body>
+</html>

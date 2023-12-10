@@ -1,0 +1,110 @@
+
+body {
+  background-color: #121212; /* Dark background for dark mode */
+  font-family: Arial, sans-serif;
+  color: #ffffff; /* Light text color for readability in dark mode */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+}
+.sub-text {
+  font-size: 15px;
+  color: grey;
+}
+
+.progress-container {
+  background-color: #1f1f1f;
+  padding: 20px;
+  width: 100%; /* Full width container */
+  box-sizing: border-box; /* Padding included in the width */
+}
+
+#progress-bar {
+  transition: width 0.5s ease-in-out; /* Smooth transition for the progress bar width */
+}
+
+
+form {
+  background-color: #1f1f1f; /* Slightly lighter than body background for contrast */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1); /* Shadow adjusted for dark mode */
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+a {
+  text-decoration: none;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #333333; /* Darker border for input */
+  background-color: #262626; /* Dark background for input */
+  color: #ffffff; /* Light text color for input */
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff; /* Keep the button color for visibility */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Adjust hover color if needed */
+}
+
+@media (max-width: 768px) {
+  form {
+    width: 90%;
+  }
+}
+
+section {
+  width: 80%; /* Adjust the width of the section containing the table */
+  max-width: 1200px; /* Maximum width to prevent the table from becoming too wide */
+  margin: 20px auto; /* Center the section */
+}
+
+table {
+  width: 100%; /* Full width of the section */
+  border-collapse: collapse; /* Collapse borders */
+  margin-top: 20px; /* Space between the table and other elements */
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #333333; /* Border color for dark mode */
+}
+
+th {
+  background-color: #1f1f1f; /* Slightly lighter than body background for contrast */
+  color: #ffffff; /* Text color for the header */
+}
+
+tbody tr:hover {
+  background-color: #262626; /* Hover effect for rows */
+}
+
+@media (max-width: 768px) {
+  section {
+    width: 90%; /* Responsive width for smaller devices */
+  }
+}
