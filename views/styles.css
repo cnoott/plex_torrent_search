@@ -11,6 +11,7 @@ body {
   min-height: 100vh;
 }
 
+
 header {
   text-align: center;
 }
@@ -29,7 +30,6 @@ header {
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-
 }
 
 #progress-bar {
@@ -59,6 +59,15 @@ a {
   text-decoration: none;
 }
 
+.tip-container{
+  background-color: #1f1f1f;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+  border-radius: 4px;
+  width: 100%;
+  font-size: 15px;
+}
+
 input[type="text"] {
   width: 100%;
   padding: 10px;
@@ -83,12 +92,56 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #0056b3; /* Adjust hover color if needed */
 }
-
+.scrollable-name {
+  max-width: 250px; /* Adjust as needed */
+  overflow-x: auto; /* Enables horizontal scrolling */
+  white-space: nowrap; /* Keeps the content on a single line */
+}
 @media (max-width: 768px) {
-  form {
+   form {
+    width: 80%; /* Adjust the width of the form */
+    margin: 10px auto; /* Center the form with auto margins */
+    padding: 15px; /* Adjust the padding */
+  }
+  .scrollable-name {
+    max-width: 200px;
+  }
+  .tip-container {
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px; 
+  }
+  table {
     width: 90%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 8px; /* Adjust padding for smaller screens */
+    text-align: left;
+  }
+
+
+  input[type="text"] {
+    font-size: 20px; /* Increase font size for better readability */
+    padding: 12px; /* Increase padding for a larger touch target */
+  }
+
+  button[type="submit"] {
+    font-size: 20px; /* Increase font size for better readability */
+    padding: 12px; /* Increase padding for a larger touch target */
+  }  
+  section {
+    width: 100%; /* Full width for smaller devices */
+    margin: 10px; /* Adjust margin for mobile view */
+  }
+
+  .progress-container, #loadingMessage {
+    width: 90%; /* Adjust the width for smaller devices */
+    margin: 10px auto; /* Center with automatic margins */
   }
 }
+
 
 section {
   width: 80%; /* Adjust the width of the section containing the table */
@@ -115,10 +168,4 @@ th {
 
 tbody tr:hover {
   background-color: #262626; /* Hover effect for rows */
-}
-
-@media (max-width: 768px) {
-  section {
-    width: 90%; /* Responsive width for smaller devices */
-  }
 }

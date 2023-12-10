@@ -15,6 +15,9 @@ const client = new WebTorrent();
 // - "I'm feeling Lucky"
 // - choose tvshow or movie option
 // - diskspace full
+// - show tip on how to choose a torrent
+// - show tip on how to search
+// - delete functionality
 
 const activeTorrents = {};
 const PATH_TO_MOVIES = process.env.PATH_TO_MOVIES;

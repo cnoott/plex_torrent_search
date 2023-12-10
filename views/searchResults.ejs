@@ -3,6 +3,9 @@
   <head>
     <title>Search Results</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
   </head>
 
   <body>
@@ -11,8 +14,23 @@
         <h1>Media Search</h1>
         <p><a href='/'>Back to Search</a></p>
       </header>
+        <div class='tip-container'>
+          <h4>Tips</h4>
+          <ul>
+            <li>
+              Make sure to choose an option that has a resolution of at least 1080p
+              <ul>
+                <li>
+                Horizontally scroll on the "Name" column to view the full title with resolution
+                </li>
+              </ul>
+            </li>
+            <li>
+              Ideally you should choose an option that has more "Seeders"
+            </li>
+          </ul>
+        </div>
       <p id="loadingMessage" style="display: none;">LOADING...</p>
-
       <table>
         <thead>
           <tr>
@@ -29,9 +47,9 @@
             '/choice?magnetLink=<%= encodeURIComponent(result.magnetLink) %>&name=<%= encodeURIComponent(result.name) %>'"
             style="cursor:pointer;">
 
-            <td><%= result.name %></td>
-            <td><%= result.size %></td>
-            <td><%= result.seeders %></td>
+            <td class='scrollable-name'><%= result.name %></td>
+            <td class='size'><%= result.size %></td>
+            <td class='seed'><%= result.seeders %></td>
             <td><%= result.leechers %></td>
           </tr>
           <% }); %>

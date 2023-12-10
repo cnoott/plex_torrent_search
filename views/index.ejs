@@ -3,13 +3,13 @@
   <head>
     <title>Media Search</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-
   <body>
     <div>
       <header>
         <h1>Media Search</h1>
-        <p class='sub-text'>0.0.1</p>
+        <p class='sub-text'>0.1.1</p>
       </header>
       <h4 id="loadingMessage" style="display: none;">
         Loading Search Results
@@ -21,7 +21,13 @@
         placeholder="Search for Movie or TV Show"
         required>
         <button type="submit" onclick="showLoading()">Search</button>
+        <h2>Tips</h1>
+        <ul>
+          <li>For best results, search for the movie name on Google and copy paste the EXACT movie title</li>
+          <li>If you're searching for a show make sure you put which season</li>
+        </ul>
       </form>
+
     </div>
     <script type="text/javascript">
       function showLoading() {
