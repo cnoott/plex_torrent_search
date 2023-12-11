@@ -29,17 +29,22 @@ app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'ejs');
 
 app.get('/', async (req, res) => {
-  // check storage capacity
-  const info = await diskusage.check('/');
+  try { 
+    // check storage capacity
+    const info = await diskusage.check('/');
 
-  const totalDiskSpace = info.total;
-  const freeDiskSpace = info.free;
+    const totalDiskSpace = info.total;
+    const freeDiskSpace = info.free;
 
-  const usedDiskSace = totalDiskSpace - freeDiskSpace;
+    const usedDiskSace = totalDiskSpace - freeDiskSpace;
 
-  const percentUsed = (usedDiskSace * 100) / totalDiskSpace;
+    const percentUsed = (usedDiskSace * 100) / totalDiskSpace;
 
-  res.render('index', { percentUsed: percentUsed.toFixed(2)});
+    res.render('index', { percentUsed: percentUsed.toFixed(2)});
+  } catch (error) {
+    console.log(error);
+    res.render('error', {error});
+  }
 });
 
 app.get('/search', async (req, res) => {
@@ -57,9 +62,9 @@ app.get('/search', async (req, res) => {
       {searchResults: searchResults}
     );
   }
-  catch (err) {
-    console.log(err);
-    res.render('error');
+  catch (error) {
+    console.log(error);
+    res.render('error', {error});
   }
 });
 
@@ -86,9 +91,9 @@ app.get('/choice', async (req, res) => {
     res.redirect(
       `show-progress?magnetLink=${encodeURIComponent(magnetLink)}&name=${encodeURIComponent(name)}`
     );
-  } catch (err) {
-    console.log(err);
-    res.render('error');
+  } catch (error) {
+    console.log(error);
+    res.render('error', {error});
   };
 });
 
@@ -111,9 +116,9 @@ app.get('/progress', async (req, res) => {
     } else {
       res.status(404).json({ error: 'Torrent not found' });
     }
-  } catch(err) {
-    console.log(err);
-    res.render('error');
+  } catch(error) {
+    console.log(error);
+    res.render('error', {error});
   }
 });
 
@@ -124,9 +129,9 @@ app.get('/show-progress', async (req, res) => {
       name = activeTorrents[req.query.magnetLink].name;
     }
     res.render('show-progress', {name});
-  } catch (err) {
-    console.log(err);
-    res.render('error');
+  } catch (error) {
+    console.log(error);
+    res.render('error', {error});
   }
 });
 
@@ -135,9 +140,9 @@ app.get('/complete', async (req, res) => {
     let magnetLink = decodeURIComponent(req.query.magnetLink);
     delete activeTorrents[magnetLink];   
     res.render('complete');
-  } catch (err) {
-    console.log(err);
-    res.render('error');
+  } catch (error) {
+    console.log(error);
+    res.render('error', {error});
   }
 });
 
